@@ -344,7 +344,7 @@ class Calendar extends Component {
 
   render() {
     const {currentMonth} = this.state;
-    const {firstDay, showSixWeeks, hideExtraDays} = this.props;
+    const {firstDay, showSixWeeks, hideExtraDays,enableSwipeMonths} = this.props;
     const shouldShowSixWeeks = showSixWeeks && !hideExtraDays;
     const days = dateutils.page(currentMonth, firstDay, shouldShowSixWeeks);
 
@@ -363,10 +363,11 @@ class Calendar extends Component {
       }
     }
 
+    const GestureComponent = enableSwipeMonths ? GestureRecognizer : View;
+    const gestureProps = enableSwipeMonths ? {onSwipe: (direction, state) => this.onSwipe(direction, state)} : {};
+
     return (
-      <GestureRecognizer
-        onSwipe={(direction, state) => this.onSwipe(direction, state)}
-      >
+      <GestureComponent {...gestureProps}>
         <View
           style={[this.style.container, this.props.style]}
           accessibilityElementsHidden={this.props.accessibilityElementsHidden} // iOS
@@ -397,7 +398,7 @@ class Calendar extends Component {
           />
           <View style={this.style.monthView}>{weeks}</View>
         </View>
-      </GestureRecognizer>
+      </GestureComponent>
     );
   }
 }
