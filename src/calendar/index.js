@@ -405,6 +405,7 @@ class Calendar extends Component {
             disableArrowRight={this.props.disableArrowRight}
             disabledDaysIndexes={this.props.disabledDaysIndexes}
             renderHeader={this.props.renderHeader}
+            calendarLang={this.props.calendarLang}
           />
           <View style={this.style.monthView}>{weeks}</View>
         </View>
