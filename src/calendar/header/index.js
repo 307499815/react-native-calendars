@@ -79,6 +79,9 @@ class CalendarHeader extends Component {
     if (nextProps.disableArrowRight !== this.props.disableArrowRight) {
       return true;
     }
+    if(nextProps.calendarLang !== this.props.calendarLang) {
+      return true;
+    }
     return false;
   }
 
