@@ -17,11 +17,8 @@ import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import {SELECT_DATE_SLOT} from '../testIDs';
 
 //Fallback for react-native-web or when RN version is < 0.44
-const {View, ViewPropTypes} = ReactNative;
-const viewPropTypes =
-  typeof document !== 'undefined'
-    ? PropTypes.shape({style: PropTypes.object})
-    : ViewPropTypes || View.propTypes;
+const {View} = ReactNative;
+
 const EmptyArray = [];
 
 /**
@@ -32,74 +29,7 @@ const EmptyArray = [];
 class Calendar extends Component {
   static displayName = 'Calendar';
 
-  static propTypes = {
-    /** Specify theme properties to override specific styles for calendar parts. Default = {} */
-    theme: PropTypes.object,
-    /** Collection of dates that have to be marked. Default = {} */
-    markedDates: PropTypes.object,
-    /** Specify style for calendar container element. Default = {} */
-    style: viewPropTypes.style,
-    /** Initially visible month. Default = Date() */
-    current: PropTypes.any,
-    /** Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined */
-    minDate: PropTypes.any,
-    /** Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined */
-    maxDate: PropTypes.any,
-    /** If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday. */
-    firstDay: PropTypes.number,
-    /** Date marking style [simple/period/multi-dot/multi-period]. Default = 'simple' */
-    markingType: PropTypes.string,
-    /** Hide month navigation arrows. Default = false */
-    hideArrows: PropTypes.bool,
-    /** Display loading indicator. Default = false */
-    displayLoadingIndicator: PropTypes.bool,
-    /** Do not show days of other months in month page. Default = false */
-    hideExtraDays: PropTypes.bool,
-    /** Always show six weeks on each month. Default = false */
-    showSixWeeks: PropTypes.bool,
-    /** Handler which gets executed on day press. Default = undefined */
-    onDayPress: PropTypes.func,
-    /** Handler which gets executed on day long press. Default = undefined */
-    onDayLongPress: PropTypes.func,
-    /** Handler which gets executed when month changes in calendar. Default = undefined */
-    onMonthChange: PropTypes.func,
-    /** Handler which gets executed when visible month changes in calendar. Default = undefined */
-    onVisibleMonthsChange: PropTypes.func,
-    /** Replace default arrows with custom ones (direction can be 'left' or 'right') */
-    renderArrow: PropTypes.func,
-    /** Provide custom day rendering component */
-    dayComponent: PropTypes.any,
-    /** Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting */
-    monthFormat: PropTypes.string,
-    /** Disables changing month when click on days of other months (when hideExtraDays is false). Default = false */
-    disableMonthChange: PropTypes.bool,
-    /**  Hide day names. Default = false */
-    hideDayNames: PropTypes.bool,
-    /** Disable days by default. Default = false */
-    disabledByDefault: PropTypes.bool,
-    /** Show week numbers. Default = false */
-    showWeekNumbers: PropTypes.bool,
-    /** Handler which gets executed when press arrow icon left. It receive a callback can go back month */
-    onPressArrowLeft: PropTypes.func,
-    /** Handler which gets executed when press arrow icon right. It receive a callback can go next month */
-    onPressArrowRight: PropTypes.func,
-    /** Disable left arrow. Default = false */
-    disableArrowLeft: PropTypes.bool,
-    /** Disable right arrow. Default = false */
-    disableArrowRight: PropTypes.bool,
-    /** Style passed to the header */
-    headerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
-    /** Provide aria-level for calendar heading for proper accessibility when used with web (react-native-web) */
-    webAriaLevel: PropTypes.number,
-    /** Apply custom disable color to selected day indexes */
-    disabledDaysIndexes: PropTypes.arrayOf(PropTypes.number),
-    /** Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates*/
-    disableAllTouchEventsForDisabledDays: PropTypes.bool,
-    /** Replace default month and year title with custom one. the function receive a date as parameter. */
-    renderHeader: PropTypes.any,
-    /** Enable the option to swipe between months. Default: false */
-    enableSwipeMonths: PropTypes.bool
-  };
+  
 
   static defaultProps = {
     enableSwipeMonths: false
